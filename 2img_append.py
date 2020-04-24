@@ -1,11 +1,13 @@
 import os
 from PIL import Image
-class_name = 'bee'
-image_path = os.path.join('/Users/joyzong/Desktop/Sketchy/rendered_256x256/256x256/photo/tx_000000000000',class_name)
-sketch_path = os.path.join('/Users/joyzong/Desktop/Sketchy/rendered_256x256/256x256/sketch/tx_000000000000',class_name)
-result_path = os.path.join('/Users/joyzong/Desktop/sketchy_v1',class_name,'result')
+#'door','duck','elephant','eyeglasses','fan','fish','flower','frog','geyser','giraffe','guitar','hamburger','hammer','harp','hat','hedgedog','helicopter','hermit_crab','door','duck','elephant','eyeglasses','fan','fish','flower','frog','geyser','giraffe','guitar','hamburger','hammer','harp','hat'
+class_name_list = ['hedgehog','helicopter','hermit_crab'
+                    ,'horse','hot-air_balloon','hotdog','hourglass','jack-o-lantern','jellyfish','kangaroo','knife','lion','lizard','lobster','motorcycle','mouse','mushroom','owl','parrot'
+                    ,'pear','penguin','piano','pickup_truck','pig','pineapple','pistol','pizza','pretzel','rabbit','raccoon','racket','ray','rhinoceros','rifle','rocket','sailboat','saw'
+                    ,'saxophone','scissors','scorpion','sea_turtle','seagull','seal','shark','sheep','skyscraper','snail','snake','songbird','spider','spoon','squirrel','starfish'
+                    ,'strawberry','swan','sword','table','tank','teapot','teddy_bear','tiger','trumpet','turtle','umbrella','violin','volcano','wading_bird','wheelchair','windmill','window','zebra']
  
-def pinjie():
+def pinjie(image_path,sketch_path,result_path):
     # 获取当前文件夹中所有JPG图像
     im_list = [os.path.join(image_path,fn) for fn in os.listdir(image_path) if fn.endswith('.png') or fn.endswith('.jpg') ]
     im_name_list = [fn.split('.') for fn in os.listdir(image_path) if fn.endswith('.png') or fn.endswith('.jpg') ]
@@ -53,4 +55,8 @@ def pinjie():
 
  
 if __name__ == '__main__':
-    pinjie()
+    for class_name in class_name_list:
+        image_path = os.path.join('/Users/joyzong/Desktop/Sketchy/rendered_256x256/256x256/photo/tx_000000000000',class_name)
+        sketch_path = os.path.join('/Users/joyzong/Desktop/Sketchy/rendered_256x256/256x256/sketch/tx_000000000000',class_name)
+        result_path = os.path.join('/Users/joyzong/Desktop/sketchy_v1',class_name,'result')
+        pinjie(image_path,sketch_path,result_path)
